@@ -4,3 +4,8 @@ server:
 spring:
   application:
     name: irisky
+  profiles:
+    active: h2
+  liquibase:
+    enabled: true
+    change-log: classpath*:/db/changelog/main-changelog.xml

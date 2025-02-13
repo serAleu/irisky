@@ -4,8 +4,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,5 +18,10 @@ public class Rating {
     private String title;
     private String caption;
     private String icon;
-    private ArrayList<Integer> levels;
+    private List<Integer> levels;
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    }
 }

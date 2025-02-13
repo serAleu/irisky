@@ -1,0 +1,7 @@
+url:http://localhost:3838/h2-irisky/
+driver:org.h2.Driver
+jdbcurl:jdbc:h2:mem:irisky
+user:sa
+password:
+
+select * from giga.credit_history_request
