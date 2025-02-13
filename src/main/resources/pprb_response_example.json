@@ -1,0 +1,310 @@
+{
+  "taskID":"7363eb71-b6b6-4bdc-8ed9-620ad0ef5d07",
+  "responseDate":"21.01.2025",
+  "rating":{
+    "score":906,
+    "title":"${RATING.NAME.4}",
+    "caption":"${RATING.DESCRIPTION.4}",
+    "icon":"${RATING.ICON.4}",
+    "levels":[
+      570,
+      793,
+      874,
+      999
+    ]
+  },
+  "factors":[
+    {
+      "factorInfluence":"59",
+      "factorDescription":"${FACTOR.DESCRIPTION.26}"
+    },
+    {
+      "factorInfluence":"41",
+      "factorDescription":"${FACTOR.DESCRIPTION.25}"
+    }
+  ],
+  "report":{
+    "loansObligationsOpen":[
+      {
+        "title":"${DEAL_TYPE.DESCRIPTION.2}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${DEAL_TYPE.ICON.2}",
+        "style":"${WIDGET.STYLE.WARNING}",
+        "warning":"${COMMON.TITLE.PAYMENT_OVERDUE}",
+        "warningIconId":"${WIDGET.ICON.INFO}",
+        "warningValue":"5 000 000,00 ₽",
+        "arrearsSum":"5 000 000,00 ₽",
+        "paymentAmount":"-",
+        "duration":"13.08.2031",
+        "outStandingBalance":"5 000 000,00 ₽",
+        "arrearsBalance":"5 000 000,00 ₽",
+        "openDate":"30.10.2019",
+        "value":"7 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"${DEAL_TYPE.DESCRIPTION.5}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${DEAL_TYPE.ICON.5}",
+        "style":"${WIDGET.STYLE.WARNING}",
+        "warning":"${COMMON.TITLE.PAYMENT_OVERDUE}",
+        "warningIconId":"${WIDGET.ICON.INFO}",
+        "warningValue":"5 000 000,00 ₽",
+        "arrearsSum":"5 000 000,00 ₽",
+        "paymentAmount":"-",
+        "duration":"13.08.2031",
+        "outStandingBalance":"5 000 000,00 ₽",
+        "arrearsBalance":"5 000 000,00 ₽",
+        "openDate":"30.10.2019",
+        "value":"7 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      }
+    ],
+    "loansObligationsClosed":[
+      {
+        "title":"${LOAN_KIND_LIST.DESCRIPTION.99_0}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${LOAN_KIND_LIST.ICON.99_0}",
+        "style":"${WIDGET.STYLE.DEFAULT}",
+        "paymentAmount":"-",
+        "duration":"13.08.2031",
+        "outStandingBalance":"-",
+        "arrearsBalance":"-",
+        "openDate":"30.10.2019",
+        "closeDate":"13.08.2021",
+        "value":"5 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"${LOAN_KIND_LIST.DESCRIPTION.99_0}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${LOAN_KIND_LIST.ICON.99_0}",
+        "style":"${WIDGET.STYLE.DEFAULT}",
+        "paymentAmount":"-",
+        "duration":"13.08.2031",
+        "outStandingBalance":"-",
+        "arrearsBalance":"-",
+        "openDate":"30.10.2019",
+        "closeDate":"13.08.2021",
+        "value":"5 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"${LOAN_KIND_LIST.DESCRIPTION.99_0}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${LOAN_KIND_LIST.ICON.99_0}",
+        "style":"${WIDGET.STYLE.DEFAULT}",
+        "paymentAmount":"-",
+        "duration":"13.08.2031",
+        "outStandingBalance":"-",
+        "arrearsBalance":"-",
+        "openDate":"30.10.2019",
+        "closeDate":"01.01.2020",
+        "value":"5 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      }
+    ],
+    "collateralContractsOpen":[
+      {
+        "title":"${DEAL_TYPE.DESCRIPTION.4}",
+        "caption":"КОРНИЛОВ С. Ю.",
+        "iconId":"${DEAL_TYPE.ICON.4}",
+        "openDate":"30.10.2019",
+        "closeDate":"30.10.2019",
+        "value":"5 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.6250}",
+        "bankName":"${ICONS_BANK.NAME.6250}"
+      },
+      {
+        "title":"${DEAL_TYPE.DESCRIPTION.4}",
+        "caption":"СТАРАДУБЦЕВ Р. А.",
+        "iconId":"${DEAL_TYPE.ICON.4}",
+        "openDate":"30.10.2019",
+        "closeDate":"30.10.2019",
+        "value":"5 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.6251}",
+        "bankName":"${ICONS_BANK.NAME.6251}"
+      },
+      {
+        "title":"${DEAL_TYPE.DESCRIPTION.4}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${DEAL_TYPE.ICON.4}",
+        "openDate":"30.10.2019",
+        "closeDate":"30.10.2019",
+        "value":"5 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      }
+    ],
+    "collateralContractsClosed":[
+      {
+        "title":"${DEAL_TYPE.DESCRIPTION.collateral}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${DEAL_TYPE.ICON.collateral}",
+        "openDate":"12.06.2021",
+        "closeDate":"12.06.2021",
+        "value":"10,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"${DEAL_TYPE.DESCRIPTION.3}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${DEAL_TYPE.ICON.3}",
+        "openDate":"13.05.2021",
+        "closeDate":"13.05.2021",
+        "value":"5 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"${DEAL_TYPE.DESCRIPTION.7}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${DEAL_TYPE.ICON.7}",
+        "openDate":"13.05.2021",
+        "closeDate":"13.05.2021",
+        "value":"5 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"${DEAL_TYPE.DESCRIPTION.4}",
+        "caption":"ПАО СОВКОМБАНК",
+        "iconId":"${DEAL_TYPE.ICON.4}",
+        "openDate":"30.10.2019",
+        "closeDate":"30.10.2019",
+        "value":"5 000 000,00 ₽",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      }
+    ],
+    "statements":[
+      {
+        "title":"ПАО СОВКОМБАНК",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"7 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"ПАО СОВКОМБАНК",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"5 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"ПАО СОВКОМБАНК",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"5 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"ПАО СОВКОМБАНК",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"7 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"ПАО СОВКОМБАНК",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"5 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"ПАО СОВКОМБАНК",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"5 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"ПАО СОВКОМБАНК",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"5 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"ПАО СОВКОМБАНК",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"5 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"ПАО СОВКОМБАНК",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"5 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.355}",
+        "bankName":"${ICONS_BANK.NAME.355}"
+      },
+      {
+        "title":"КОРНИЛОВ С. Ю.",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"КОРНИЛОВ С. Ю.",
+        "value":"5 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.6250}",
+        "bankName":"${ICONS_BANK.NAME.6250}"
+      },
+      {
+        "title":"СТАРАДУБЦЕВ Р. А.",
+        "iconId":"${WIDGET.ICON.WALLET_FILLED}",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"СТАРАДУБЦЕВ Р. А.",
+        "value":"5 000 000,00 ₽",
+        "commitment":"-",
+        "bankIcon":"${ICONS_BANK.ICON.6251}",
+        "bankName":"${ICONS_BANK.NAME.6251}"
+      }
+    ]
+  }
+}

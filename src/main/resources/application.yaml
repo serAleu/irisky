@@ -1,0 +1,6 @@
+server:
+  port: 3838
+
+spring:
+  application:
+    name: irisky
