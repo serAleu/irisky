@@ -1,3 +1,5 @@
+https://my.tuna.am/
+
 --run forwarding
 tuna http 3838 --subdomain=irisky-giga
 
