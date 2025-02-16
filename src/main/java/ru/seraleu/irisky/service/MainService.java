@@ -13,6 +13,7 @@ import ru.seraleu.irisky.enums.Status;
 import ru.seraleu.irisky.utils.PprbResponseMockGenerator;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 import static ru.seraleu.irisky.enums.Status.*;
@@ -47,5 +48,15 @@ public class MainService {
         creditHistoryRequestEntity.setAddedAt(LocalDateTime.now());
         creditHistoryRequestJpaRepository.save(creditHistoryRequestEntity);
         return response;
+    }
+
+    public ResponseEntity<String> generatePhoneNumber() {
+        Random random = new Random();
+        StringBuilder phoneNumber = new StringBuilder("+79");
+        for (int i = 0; i < 9; i++) {
+            phoneNumber.append((random.nextInt(10)));
+        }
+        log.info("Phone number: " + phoneNumber);
+        return  ResponseEntity.status(HttpStatus.OK).body(phoneNumber.toString());
     }
 }
