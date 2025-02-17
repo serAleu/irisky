@@ -11,6 +11,7 @@ import ru.seraleu.irisky.data.entity.CreditHistoryRequestEntity;
 import ru.seraleu.irisky.data.repository.CreditHistoryRequestJpaRepository;
 import ru.seraleu.irisky.enums.Status;
 import ru.seraleu.irisky.utils.PprbResponseMockGenerator;
+import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberResponse;
 
 import java.time.LocalDateTime;
 import java.util.Random;
@@ -50,13 +51,17 @@ public class MainService {
         return response;
     }
 
-    public ResponseEntity<String> generatePhoneNumber() {
+    public ResponseEntity<PhoneNumberResponse> generatePhoneNumber() {
         Random random = new Random();
         StringBuilder phoneNumber = new StringBuilder("+79");
         for (int i = 0; i < 9; i++) {
             phoneNumber.append((random.nextInt(10)));
         }
         log.info("Phone number: " + phoneNumber);
-        return  ResponseEntity.status(HttpStatus.OK).body(phoneNumber.toString());
+        return  ResponseEntity.status(HttpStatus.OK)
+                .body(PhoneNumberResponse
+                        .builder()
+                        .phoneNumber(phoneNumber.toString())
+                        .build());
     }
 }

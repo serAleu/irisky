@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.seraleu.irisky.service.MainService;
+import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberResponse;
 
 @RestController
 @RequestMapping(path = "/credit-hist")
@@ -21,7 +22,7 @@ public class IrirskyController {
     }
 
     @GetMapping(value = "/getPhone", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> getPhoneNumber() {
+    public ResponseEntity<PhoneNumberResponse> getPhoneNumber() {
         log.info("Started processing the generating a phone number.");
         return mainService.generatePhoneNumber();
     }
