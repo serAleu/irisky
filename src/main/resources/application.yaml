@@ -2,10 +2,28 @@ server:
   port: 3838
 
 spring:
+  ssl:
+    bundle:
+      jks:
+        my-client:
+          truststore:
+            location:
+            password:
+            type: PKCS12
   application:
     name: irisky
+
   profiles:
     active: h2
+
   liquibase:
     enabled: true
     change-log: classpath*:/db/changelog/main-changelog.xml
+
+  h2:
+    console:
+      enabled: true
+
+sber:
+  llm:
+    auth:
