@@ -1,4 +1,4 @@
-package ru.seraleu.irisky.web.feign;
+package ru.seraleu.irisky.web.gigachat.client;
 
 
 import org.springframework.cloud.openfeign.FeignClient;
@@ -13,7 +13,7 @@ import ru.seraleu.irisky.web.dto.pprb.giga.rs.OAuthResponse;
 import java.util.Map;
 
 @FeignClient(name = "my-client", url = "https://ngw.devices.sberbank.ru:9443/api/v2/oauth", configuration = FeignClientConfig.class)
-public interface SberOAuthClient {
+public interface GigaOAuthClient {
 
     @PostMapping(
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,

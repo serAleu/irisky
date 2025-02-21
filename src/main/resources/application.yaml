@@ -4,17 +4,23 @@ server:
 spring:
   ssl:
     bundle:
-      jks:
+      pem:
         my-client:
           truststore:
-            location:
-            password:
-            type: PKCS12
+            certificate: src/main/resources/certs/russian_trusted_sub_ca.cer
+#  ssl:
+#    bundle:
+#      jks:
+#        my-client:
+#          truststore:
+#            location:
+#            password:
+#            type: PKCS12
   application:
     name: irisky
 
   profiles:
-    active: h2
+    active: h2,telegram,giga
 
   liquibase:
     enabled: true

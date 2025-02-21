@@ -1,4 +1,4 @@
-package ru.seraleu.irisky.web.client;
+package ru.seraleu.irisky.web.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +8,7 @@ import ru.seraleu.irisky.web.dto.pprb.giga.rq.ChatCompletionRequest;
 import ru.seraleu.irisky.web.dto.pprb.giga.rs.ChatCompletionResponse;
 import ru.seraleu.irisky.web.dto.pprb.giga.rs.OAuthResponse;
 import ru.seraleu.irisky.web.feign.GigaChatClient;
-import ru.seraleu.irisky.web.feign.SberOAuthClient;
+import ru.seraleu.irisky.web.gigachat.client.GigaOAuthClient;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -20,22 +20,23 @@ import java.util.UUID;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class OAuthClient {
+public class GigachatService {
 
-    private final SberOAuthClient sberOAuthClient;
+    private final GigaOAuthClient gigaOAuthClient;
     private final GigaChatClient gigaChatClient;
     private final GigaChatProperties properties;
 
     private static long TOKEN_VALIDITY_TIME = 0L;
     private static String TOKEN = null;
 
-    public String getChatCompletion(String prompt) {
+    public String askGigaQuestion(String prompt) {
         // Проверяем валидность токена
         isTokenValid(TOKEN_VALIDITY_TIME);
 
         // Формируем запрос
         ChatCompletionRequest request = new ChatCompletionRequest(
-                "GigaChat-Pro",
+                //GigaChat Lite 
+                "GigaChat",
                 List.of(new ChatCompletionRequest.ChatMessage("user", prompt)),
                 1,
                 false,
@@ -52,8 +53,8 @@ public class OAuthClient {
     private OAuthResponse requestAccessToken() {
         Map<String, Object> form = new HashMap<>();
         form.put("scope", "GIGACHAT_API_PERS");
-        return sberOAuthClient.getAccessToken(
-                UUID.randomUUID().toString(), "Basic " + properties.auth(), form).getBody();
+        return gigaOAuthClient.getAccessToken(
+                "c9f625be-9ee9-4c4c-a01e-9effd495050e", "Basic " + "ZjA0ODllYWMtNzY0NS00OWZjLWJiNDctZTQzZWRmMTkwNzMyOjgwZTE3MDIyLTQxNjktNDg3Mi04NDYzLTJhNDZmNWNlNDE3Nw==", form).getBody();
     }
 
     private void isTokenValid(long time) {

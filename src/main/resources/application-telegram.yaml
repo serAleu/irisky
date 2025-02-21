@@ -1,0 +1,26 @@
+telegram:
+  web:
+    bot-username: i_risky_bot
+    admin-chat-id: 1026435138
+    auth:
+      token: ${WEB_TELEGRAM_AUTH_TOKEN}
+  steps:
+    start:
+      message: |
+        Я могу посмотреть твою кредитную историю и тебе рассказать про неё всё-всё-всё! Попробуем?
+      button: Давай!
+      image-path: src/main/resources/telegram/start_image.png
+    options:
+      message: |
+        Выбери, что мне нужно сделать...
+      dishes:
+        message: |
+          Напиши в свободной форме какие продукты у тебя есть в наличии
+        button: Придумать список блюд
+      option1:
+        button: Опция 1
+      option2:
+        button: Опция 2
+  forbidden-words:
+    is_enabled: true
+    path: src/main/resources/telegram/forbidden_words.txt
