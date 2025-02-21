@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.seraleu.irisky.service.MainService;
-import ru.seraleu.irisky.service.OAuthService;
-import ru.seraleu.irisky.web.dto.pprb.gigaChatDto.rq.GigaChatRequest;
+import ru.seraleu.irisky.web.client.OAuthClient;
+import ru.seraleu.irisky.web.dto.pprb.giga.rq.GigaChatRequest;
 import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberResponse;
 
 @RestController
@@ -17,7 +17,7 @@ public class IrirskyController {
 
     private final MainService mainService;
 
-    private final OAuthService oAuthService;
+    private final OAuthClient oAuthClient;
 
 
     @PostMapping(value = "/post", consumes = "application/json", produces = "application/json")
@@ -36,7 +36,7 @@ public class IrirskyController {
     @PostMapping(value = "/postGigaChat", consumes = "application/json", produces = "application/json")
     public String findFromGiga (@RequestBody GigaChatRequest request) {
         log.info("Request in GigaChat. request: " + '\n' + request);
-        String response = oAuthService.getChatCompletion(request.message());
+        String response = oAuthClient.getChatCompletion(request.message());
         log.info("GigaChat response: " + '\n' + response);
 
         return response;

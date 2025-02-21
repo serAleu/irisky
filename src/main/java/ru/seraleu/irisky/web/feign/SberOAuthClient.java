@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestBody;
 import ru.seraleu.irisky.config.FeignClientConfig;
-import ru.seraleu.irisky.web.dto.pprb.gigaChatDto.rs.OAuthResponse;
+import ru.seraleu.irisky.web.dto.pprb.giga.rs.OAuthResponse;
 
 import java.util.Map;
 

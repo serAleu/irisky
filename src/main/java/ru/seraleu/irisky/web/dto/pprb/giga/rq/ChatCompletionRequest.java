@@ -1,4 +1,4 @@
-package ru.seraleu.irisky.web.dto.pprb.gigaChatDto.rq;
+package ru.seraleu.irisky.web.dto.pprb.giga.rq;
 
 import java.util.List;
 
