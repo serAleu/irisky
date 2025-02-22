@@ -6,7 +6,7 @@
 --preconditions-sql-check expectedResult: 0 SELECT COUNT(*) AS count FROM information_schema.tables WHERE table_schema = 'i_risky' table_name = 'processing_result_validation_agent'
 CREATE TABLE i_risky.processing_result_validation_agent (
     id INT NOT NULL auto_increment,
-    credit_hist_processing_agent_id INT NOT NULL,
+    credit_hist_processing_agent_uuid VARCHAR NOT NULL,
     status VARCHAR(100),
     result VARCHAR,
     added_at TIMESTAMP,

@@ -1,5 +1,6 @@
 package ru.seraleu.irisky.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.seraleu.irisky.data.entity.CreditHistProcessingAgentEntity;
 import ru.seraleu.irisky.data.entity.EpkClientEntity;
+import ru.seraleu.irisky.data.entity.ProcessingResultValidationAgentEntity;
 import ru.seraleu.irisky.enums.Status;
 import ru.seraleu.irisky.utils.PprbResponseMockGenerator;
 import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberResponse;
@@ -52,8 +54,22 @@ public class MainService {
         return response;
     }
 
-    public String saveProcessingResultValidationEntity(String uuid) {
+    public void saveProcessingResultValidationEntity(String json) throws Exception {
+        JsonNode jsonNode = mapper.readTree(json);
+        ProcessingResultValidationAgentEntity entity = new ProcessingResultValidationAgentEntity()
+                .setCreditHistProcessingAgentUuid(jsonNode.get("uuid").asText())
+                .setStatus(Status.defineStatus(jsonNode.get("status").asText()))
+                .setResult(jsonNode.get("result").asText())
+                .setAddedAt(LocalDateTime.now());
+        dataService.saveProcessingResultValidationAgentEntity(entity);
+    }
 
+    public void saveProcessingResultValidationEntityError(Exception e) {
+        ProcessingResultValidationAgentEntity entity = new ProcessingResultValidationAgentEntity()
+                .setStatus(Status.ERROR)
+                .setAddedAt(LocalDateTime.now())
+                .setErrorDetails(getStackTrace(e));
+        dataService.saveProcessingResultValidationAgentEntity(entity);
     }
 
     public String saveCreditHistProcessingAgentEntityStartCalculating(String json) throws Exception {

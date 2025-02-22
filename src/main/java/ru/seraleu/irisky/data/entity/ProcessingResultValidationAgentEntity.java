@@ -18,8 +18,8 @@ import java.time.LocalDateTime;
 @Table(schema = "i_risky", name = "processing_result_validation_agent")
 public class ProcessingResultValidationAgentEntity extends BaseJpaEntity {
 
-    @Column(name = "credit_hist_processing_agent_id")
-    private Long creditHistProcessingAgentId;
+    @Column(name = "credit_hist_processing_agent_uuid")
+    private String creditHistProcessingAgentUuid;
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;

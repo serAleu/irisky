@@ -41,6 +41,18 @@ public class IrirskyController {
         }
     }
 
+    @PostMapping(value = "/save-credit-hist-processing-validation", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> saveProcessingResultValidationEntity(@RequestBody String response) {
+        log.info("Saving response JSON into processing_result_validation_agent table. response: " + '\n' + response);
+        try {
+            mainService.saveProcessingResultValidationEntity(response);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } catch (Exception e) {
+            mainService.saveProcessingResultValidationEntityError(e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
     @PostMapping(value = "/post", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> getCreditHistoryByPhoneNumber(@RequestBody String request) {
         log.info("Started processing the request. request: " + '\n' + request);
