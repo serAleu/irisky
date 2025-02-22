@@ -6,8 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.seraleu.irisky.service.MainService;
-import ru.seraleu.irisky.web.service.GigachatService;
-import ru.seraleu.irisky.web.dto.pprb.giga.rq.GigaChatRequest;
 import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberResponse;
 
 @RestController
@@ -18,8 +16,30 @@ public class IrirskyController {
 
     private final MainService mainService;
 
-    private final GigachatService gigachatService;
+    @PostMapping(value = "/save-credit-hist-processing-start", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> saveCreditHistProcessingAgentEntityStartCalculating(@RequestBody String request) {
+        log.info("Saving request JSON into credit_hist_processing_agent table. request: " + '\n' + request);
+        try {
+            String creditHistProcessingEntityPKJson = mainService.saveCreditHistProcessingAgentEntityStartCalculating(request);
+            log.info("Primary key for credit_hist_processing_agent table: " + '\n' + creditHistProcessingEntityPKJson);
+            return ResponseEntity.status(HttpStatus.OK).body(creditHistProcessingEntityPKJson);
+        } catch (Exception e) {
+            mainService.saveCreditHistProcessingAgentEntityError(e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
 
+    @PostMapping(value = "/save-credit-hist-processing-finish", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> saveCreditHistProcessingAgentEntityFinishCalculating(@RequestBody String response) {
+        log.info("Saving response JSON into credit_hist_processing_agent table. response: " + '\n' + response);
+        try {
+            mainService.saveCreditHistProcessingAgentEntityFinishCalculating(response);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } catch (Exception e) {
+            mainService.saveCreditHistProcessingAgentEntityError(e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
 
     @PostMapping(value = "/post", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> getCreditHistoryByPhoneNumber(@RequestBody String request) {
@@ -27,24 +47,16 @@ public class IrirskyController {
         return mainService.processRequest(request);
     }
 
-    @GetMapping(value = "/getPhone", consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/get-phone", consumes = "application/json", produces = "application/json")
     public ResponseEntity<PhoneNumberResponse> getPhoneNumber() {
         log.info("Started processing the generating a phone number.");
         return mainService.generatePhoneNumber();
     }
 
-
-    @PostMapping(value = "/postGigaChat", consumes = "application/json", produces = "application/json")
-    public String findFromGiga (@RequestBody GigaChatRequest request) {
-        log.info("Request in GigaChat. request: " + '\n' + request);
-        String response = gigachatService.askGigaQuestion(request.message());
-        log.info("GigaChat response: " + '\n' + response);
-        return response;
-    }
-
-    @GetMapping(value = "/hello", consumes = "application/json", produces = "application/json")
+//    @GetMapping(value = "/hello", consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/hello")
     public ResponseEntity<String> getSayHello() {
-        log.info("getSayHello");
-        return ResponseEntity.status(HttpStatus.OK).body("{\"message\":\"Привет!\"}");
+        log.info("getSayHello: " + "message");
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

@@ -27,28 +27,4 @@ public class IrirskyConfig {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return mapper;
     }
-
-    @Value("${telegram.forbidden-words.path}")
-    private String telegramForbiddenWordsPath;
-
-    @Bean("gigaResponseStatusesMap")
-    public Map<String, List<String>> gigaResponseStatusesMap() {
-        return new HashMap<>() {{
-            put("SUCCESS", List.of("SUCCESS", "SUCCESS:"));
-            put("FAILURE", List.of("FAILURE", "FAILURE:", "GIGACHAT", "ГИГАЧАТ", "НЕЙРОСЕТЬ", "GIGA CHAT", "GIGA_CHAT", "GIGA-CHAT", "ЯЗЫКОВАЯ МОДЕЛЬ"));
-        }};
-    }
-
-    @Bean("forbiddenWords")
-    public List<String> forbiddenWords() {
-        List<String> forbiddenWords = new ArrayList<>();
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(telegramForbiddenWordsPath)))) {
-            while (reader.ready()) {
-                forbiddenWords.add(reader.readLine());
-            }
-        } catch (Exception e) {
-            log.error("Error while forbidden words reading. {}", getStackTrace(e));
-        }
-        return forbiddenWords;
-    }
 }

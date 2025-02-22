@@ -15,18 +15,18 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @RequiredArgsConstructor
 @Entity
-@Table(schema = "giga", name = "credit_history_request")
-public class CreditHistoryRequestEntity extends BaseJpaEntity {
+@Table(schema = "i_risky", name = "processing_result_validation_agent")
+public class ProcessingResultValidationAgentEntity extends BaseJpaEntity {
 
-    @Column(name = "added_at")
-    private LocalDateTime addedAt;
-    @Column(name = "request")
-    private String request;
-    @Column(name = "response")
-    private String response;
+    @Column(name = "credit_hist_processing_agent_id")
+    private Long creditHistProcessingAgentId;
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
+    @Column(name = "result")
+    private String result;
+    @Column(name = "added_at")
+    private LocalDateTime addedAt;
     @Column(name = "error_details")
     private String errorDetails;
 }
