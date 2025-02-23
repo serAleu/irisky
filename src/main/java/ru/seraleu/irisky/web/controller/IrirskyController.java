@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.seraleu.irisky.service.MainService;
 import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberResponse;
 
+import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
+
 @RestController
 @RequestMapping(path = "/credit-hist")
 @RequiredArgsConstructor
@@ -24,7 +26,7 @@ public class IrirskyController {
             log.info("Primary key for credit_hist_processing_agent table: " + '\n' + creditHistProcessingEntityPKJson);
             return ResponseEntity.status(HttpStatus.OK).body(creditHistProcessingEntityPKJson);
         } catch (Exception e) {
-            mainService.saveCreditHistProcessingAgentEntityError(e);
+            log.error("Error while saving processing json into credit_hist_processing_agent table. {}", getStackTrace(e));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
@@ -36,7 +38,7 @@ public class IrirskyController {
             mainService.saveCreditHistProcessingAgentEntityFinishCalculating(response);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (Exception e) {
-            mainService.saveCreditHistProcessingAgentEntityError(e);
+            log.error("Error while saving validated result into credit_hist_processing_agent table. {}", getStackTrace(e));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
@@ -59,7 +61,7 @@ public class IrirskyController {
         return mainService.processRequest(request);
     }
 
-    @GetMapping(value = "/get-phone", consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/get-number", produces = "application/json")
     public ResponseEntity<PhoneNumberResponse> getPhoneNumber() {
         log.info("Started processing the generating a phone number.");
         return mainService.generatePhoneNumber();

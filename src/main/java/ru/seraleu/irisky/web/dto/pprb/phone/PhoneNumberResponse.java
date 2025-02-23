@@ -10,5 +10,5 @@ import lombok.*;
 @AllArgsConstructor
 public class PhoneNumberResponse {
 
-    private String phoneNumber;
+    private String number;
 }

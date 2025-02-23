@@ -99,15 +99,10 @@ public class MainService {
         }
     }
 
-    public void saveCreditHistProcessingAgentEntityError(Exception e) {
-        dataService.saveCreditHistProcessingAgentEntity(new CreditHistProcessingAgentEntity()
-                .setStatus(Status.ERROR)
-                .setErrorDetails(getStackTrace(e)));
-    }
-
     public ResponseEntity<PhoneNumberResponse> generatePhoneNumber() {
         Random random = new Random();
-        StringBuilder phoneNumber = new StringBuilder("+79");
+//        StringBuilder phoneNumber = new StringBuilder("+79");
+        StringBuilder phoneNumber = new StringBuilder("k111029");
         for (int i = 0; i < 9; i++) {
             phoneNumber.append((random.nextInt(10)));
         }
@@ -115,7 +110,7 @@ public class MainService {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(PhoneNumberResponse
                         .builder()
-                        .phoneNumber(phoneNumber.toString())
+                        .number(phoneNumber.toString())
                         .build());
     }
 }
