@@ -1,7 +1,8 @@
 package ru.seraleu.irisky.web.dto.pprb;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -9,17 +10,14 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
 public class CollateralContractsOpen {
-    private String title;
     private String caption;
-    private String iconId;
     private String openDate;
     private String closeDate;
     private String value;
-    private String bankIcon;
-    private String bankName;
 
     @Override
     public String toString() {

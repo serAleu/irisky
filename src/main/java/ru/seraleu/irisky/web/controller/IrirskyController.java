@@ -4,8 +4,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import ru.seraleu.irisky.service.EpkClientService;
 import ru.seraleu.irisky.service.MainService;
+import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberRequest;
 import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberResponse;
 
 import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
@@ -14,9 +20,12 @@ import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 @RequestMapping(path = "/credit-hist")
 @RequiredArgsConstructor
 @Slf4j
+
 public class IrirskyController {
 
     private final MainService mainService;
+
+    private final EpkClientService epkClientService;
 
     @PostMapping(value = "/save-credit-hist-processing-start", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> saveCreditHistProcessingAgentEntityStartCalculating(@RequestBody String request) {
@@ -64,7 +73,7 @@ public class IrirskyController {
     @GetMapping(value = "/get-number", produces = "application/json")
     public ResponseEntity<PhoneNumberResponse> getPhoneNumber() {
         log.info("Started processing the generating a phone number.");
-        return mainService.generatePhoneNumber();
+        return epkClientService.getRandomPhoneNumber();
     }
 
 //    @GetMapping(value = "/hello", consumes = "application/json", produces = "application/json")
@@ -72,5 +81,11 @@ public class IrirskyController {
     public ResponseEntity<String> getSayHello() {
         log.info("getSayHello: " + "message");
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping(value = "/get-credit-history", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> getKIByPhoneNumber(@RequestBody PhoneNumberRequest number) {
+        log.info("Started processing the requesting a credit history. PhoneNumberRequest: " + '\n' + number);
+        return epkClientService.getRootByPhoneNumber(number.getNumber());
     }
 }

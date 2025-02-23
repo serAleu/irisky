@@ -1,10 +1,15 @@
 package ru.seraleu.irisky.data.entity;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.databind.JsonNode;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import ru.seraleu.irisky.data.BaseJpaEntity;
 
 @Getter
@@ -23,4 +28,7 @@ public class EpkClientEntity extends BaseJpaEntity {
     private Boolean agreementProvided;
     @Column(name = "full_name")
     private String fullName;
+    @Column(name = "report_credit_history")
+    @JdbcTypeCode(SqlTypes.JSON)
+    private JsonNode reportCreditHistory;
 }

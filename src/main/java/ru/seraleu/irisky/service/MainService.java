@@ -1,6 +1,5 @@
 package ru.seraleu.irisky.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -106,11 +105,8 @@ public class MainService {
         for (int i = 0; i < 9; i++) {
             phoneNumber.append((random.nextInt(10)));
         }
-        log.info("Phone number: " + phoneNumber);
+        log.info("Phone number: {}", phoneNumber);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(PhoneNumberResponse
-                        .builder()
-                        .number(phoneNumber.toString())
-                        .build());
+                .body(new PhoneNumberResponse(phoneNumber.toString()));
     }
 }
