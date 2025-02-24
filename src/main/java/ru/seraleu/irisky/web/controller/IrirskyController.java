@@ -62,9 +62,9 @@ public class IrirskyController {
     }
 
     @GetMapping(value = "/get-number", produces = "application/json")
-    public ResponseEntity<PhoneNumberResponse> getPhoneNumber() {
+    public ResponseEntity<PhoneNumberResponse> getNumber() {
         log.info("Started processing the generating a phone number.");
-        return mainService.generatePhoneNumber();
+        return mainService.generateNumber();
     }
 
 //    @GetMapping(value = "/hello", consumes = "application/json", produces = "application/json")

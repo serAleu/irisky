@@ -36,8 +36,8 @@ public class MainService {
         EpkClientEntity epkClientEntity = new EpkClientEntity();
         try {
             JsonNode node = mapper.readTree(request);
-            if (mapper.readTree(request).has("phoneNumber")) {
-                String creditHistory = mockGenerator.getRandomPprbResponseMosk(node.get("phoneNumber").toString()).toString();
+            if (mapper.readTree(request).has("number")) {
+                String creditHistory = mockGenerator.getRandomPprbResponseMosk(node.get("number").toString()).toString();
 //                epkClientEntity.setStatus(SUCCESS).setResponse(creditHistory).setRequest(node.toString());
                 response = ResponseEntity.status(HttpStatus.OK).body(creditHistory);
             } else {
@@ -99,18 +99,17 @@ public class MainService {
         }
     }
 
-    public ResponseEntity<PhoneNumberResponse> generatePhoneNumber() {
+    public ResponseEntity<PhoneNumberResponse> generateNumber() {
         Random random = new Random();
-//        StringBuilder phoneNumber = new StringBuilder("+79");
-        StringBuilder phoneNumber = new StringBuilder("k111029");
+        StringBuilder number = new StringBuilder("k111029");
         for (int i = 0; i < 9; i++) {
-            phoneNumber.append((random.nextInt(10)));
+            number.append((random.nextInt(10)));
         }
-        log.info("Phone number: " + phoneNumber);
+        log.info("Number: " + number);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(PhoneNumberResponse
                         .builder()
-                        .number(phoneNumber.toString())
+                        .number(number.toString())
                         .build());
     }
 }
