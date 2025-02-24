@@ -1,26 +1,23 @@
 package ru.seraleu.irisky.web.dto.pprb;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
+@Builder
 public class Statement {
     private String title;
-    private String iconId;
     private String date;
     private String status;
     private String source;
     private String value;
     private String commitment;
-    private String bankIcon;
-    private String bankName;
 
     @Override
     public String toString() {

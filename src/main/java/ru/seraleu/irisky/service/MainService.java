@@ -1,6 +1,5 @@
 package ru.seraleu.irisky.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -36,8 +35,8 @@ public class MainService {
         EpkClientEntity epkClientEntity = new EpkClientEntity();
         try {
             JsonNode node = mapper.readTree(request);
-            if (mapper.readTree(request).has("number")) {
-                String creditHistory = mockGenerator.getRandomPprbResponseMosk(node.get("number").toString()).toString();
+            if (mapper.readTree(request).has("phoneNumber")) {
+                String creditHistory = mockGenerator.getRandomPprbResponseMosk(node.get("phoneNumber").toString()).toString();
 //                epkClientEntity.setStatus(SUCCESS).setResponse(creditHistory).setRequest(node.toString());
                 response = ResponseEntity.status(HttpStatus.OK).body(creditHistory);
             } else {
@@ -99,17 +98,15 @@ public class MainService {
         }
     }
 
-    public ResponseEntity<PhoneNumberResponse> generateNumber() {
+    public ResponseEntity<PhoneNumberResponse> generatePhoneNumber() {
         Random random = new Random();
-        StringBuilder number = new StringBuilder("k111029");
+//        StringBuilder phoneNumber = new StringBuilder("+79");
+        StringBuilder phoneNumber = new StringBuilder("k111029");
         for (int i = 0; i < 9; i++) {
-            number.append((random.nextInt(10)));
+            phoneNumber.append((random.nextInt(10)));
         }
-        log.info("Number: " + number);
+        log.info("Phone number: {}", phoneNumber);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(PhoneNumberResponse
-                        .builder()
-                        .number(number.toString())
-                        .build());
+                .body(new PhoneNumberResponse(phoneNumber.toString()));
     }
 }

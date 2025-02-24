@@ -7,5 +7,6 @@
     <include file="/db/changelog/h2/irisky/create_schema_i_risky.sql"/>
 
     <includeAll path="/db/changelog/h2/irisky/tables"/>
+    <includeAll path="/db/changelog/h2/irisky/data"/>
 
 </databaseChangeLog>
