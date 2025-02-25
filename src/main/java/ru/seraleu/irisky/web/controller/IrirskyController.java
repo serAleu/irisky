@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.seraleu.irisky.service.EpkClientService;
 import ru.seraleu.irisky.service.MainService;
-import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberRequest;
-import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberResponse;
+import ru.seraleu.irisky.web.dto.pprb.phone.CreditHistIdentifier;
 
 import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 
@@ -71,21 +70,14 @@ public class IrirskyController {
     }
 
     @GetMapping(value = "/get-number", produces = "application/json")
-    public ResponseEntity<PhoneNumberResponse> getPhoneNumber() {
+    public ResponseEntity<CreditHistIdentifier> getPhoneNumber() {
         log.info("Started processing the generating a phone number.");
         return epkClientService.getRandomPhoneNumber();
     }
 
-//    @GetMapping(value = "/hello", consumes = "application/json", produces = "application/json")
-    @GetMapping(value = "/hello")
-    public ResponseEntity<String> getSayHello() {
-        log.info("getSayHello: " + "message");
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
-
     @PostMapping(value = "/get-credit-history", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> getKIByPhoneNumber(@RequestBody PhoneNumberRequest number) {
-        log.info("Started processing the requesting a credit history. PhoneNumberRequest: " + '\n' + number);
-        return epkClientService.getRootByPhoneNumber(number.getNumber());
+    public ResponseEntity<?> getCredHistByCreditHistIdentifier(@RequestBody CreditHistIdentifier creditHistIdentifier) {
+        log.info("Start processing credit history request. CreditHistIdentifier: " + '\n' + creditHistIdentifier);
+        return epkClientService.getRootByPhoneNumber(creditHistIdentifier.getIdentifier());
     }
 }

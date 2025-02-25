@@ -11,6 +11,6 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class PhoneNumberResponse {
-    private String number;
+public class CreditHistIdentifier {
+    private String identifier;
 }

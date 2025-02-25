@@ -8,5 +8,5 @@ import ru.seraleu.irisky.data.entity.EpkClientEntity;
 @Repository
 public interface EpkClientRepository extends BaseJpaRepository<EpkClientEntity> {
 
-    EpkClientEntity findByPhoneNum(@Param("phoneNum") String phoneNumber);
+    EpkClientEntity findByIdentifier(@Param("identifier") String identifier);
 }

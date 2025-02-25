@@ -44,7 +44,7 @@ public class CreditHistProcessingAgentEntity {
     @Override
     public String toString() {
         return "{" +
-                "\"uuid\":\"" + uuid +
+                "\"genuuid\":\"" + uuid +
                 "\"}";
     }
 }

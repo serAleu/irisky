@@ -3,7 +3,7 @@
 --changeset ser_aleu_kris:1cb80942-e3fd-4a4b-8d72-e9d1ed79bffe runOnChange:true failOnError:true
 Insert into i_risky.epk_client (id,
                                 epk_id,
-                                phone_num,
+                                identifier,
                                 agreement_provided,
                                 full_name,
                                 report_credit_history)

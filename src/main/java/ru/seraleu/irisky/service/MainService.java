@@ -13,7 +13,7 @@ import ru.seraleu.irisky.data.entity.EpkClientEntity;
 import ru.seraleu.irisky.data.entity.ProcessingResultValidationAgentEntity;
 import ru.seraleu.irisky.enums.Status;
 import ru.seraleu.irisky.utils.PprbResponseMockGenerator;
-import ru.seraleu.irisky.web.dto.pprb.phone.PhoneNumberResponse;
+import ru.seraleu.irisky.web.dto.pprb.phone.CreditHistIdentifier;
 
 import java.time.LocalDateTime;
 import java.util.Random;
@@ -74,8 +74,10 @@ public class MainService {
     public String saveCreditHistProcessingAgentEntityStartCalculating(String json) throws Exception {
         JsonNode jsonNode = mapper.readTree(json);
         CreditHistProcessingAgentEntity entity = new CreditHistProcessingAgentEntity()
-                .setEpkId(jsonNode.get("epk_id").asLong())
-                .setPhoneNum(jsonNode.get("phone_num").asText())
+//                .setEpkId(jsonNode.get("epk_id").asLong())
+//                .setPhoneNum(jsonNode.get("phone_num").asText())
+                .setEpkId(3333L)
+                .setPhoneNum("88888888")
                 .setProcessingJson(StringUtils.normalizeSpace(json).replaceAll("\\r\\n|\\r|\\n", ""))
                 .setStatus(Status.RECEIVED)
                 .setStartDtm(LocalDateTime.now());
@@ -98,7 +100,7 @@ public class MainService {
         }
     }
 
-    public ResponseEntity<PhoneNumberResponse> generatePhoneNumber() {
+    public ResponseEntity<CreditHistIdentifier> generatePhoneNumber() {
         Random random = new Random();
 //        StringBuilder phoneNumber = new StringBuilder("+79");
         StringBuilder phoneNumber = new StringBuilder("k111029");
@@ -107,6 +109,6 @@ public class MainService {
         }
         log.info("Phone number: {}", phoneNumber);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(new PhoneNumberResponse(phoneNumber.toString()));
+                .body(new CreditHistIdentifier(phoneNumber.toString()));
     }
 }
