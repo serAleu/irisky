@@ -25,7 +25,7 @@ public class DataService {
     }
 
     public CreditHistProcessingAgentEntity getCreditHistProcessingAgentEntityByGenuuid(String genuuid) {
-        return creditHistProcessingAgentRepository.getReferenceById(genuuid);
+        return creditHistProcessingAgentRepository.findByGenuuid(genuuid);
     }
 
     public void saveEpkClientJpaEntity(EpkClientEntity entity) {

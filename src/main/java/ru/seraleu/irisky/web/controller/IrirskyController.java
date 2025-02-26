@@ -41,7 +41,7 @@ public class IrirskyController {
 
     @PostMapping(value = "/save-credit-hist-processing-finish", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> saveCreditHistProcessingAgentEntityFinishCalculating(@RequestBody String response) {
-        log.info("Saving response JSON into credit_hist_processing_agent table. response: " + '\n' + response);
+        log.info("Saving response unvalidated into credit_hist_processing_agent table. response: " + '\n' + response);
         try {
             mainService.saveCreditHistProcessingAgentEntityFinishCalculating(response);
             return ResponseEntity.status(HttpStatus.OK).build();
@@ -64,15 +64,15 @@ public class IrirskyController {
     }
 
     @PostMapping(value = "/post", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> getCreditHistoryByPhoneNumber(@RequestBody String request) {
+    public ResponseEntity<String> getCreditHistoryByCreditHistIdentifier(@RequestBody String request) {
         log.info("Started processing the request. request: " + '\n' + request);
         return mainService.processRequest(request);
     }
 
     @GetMapping(value = "/get-number", produces = "application/json")
-    public ResponseEntity<CreditHistIdentifier> getPhoneNumber() {
-        log.info("Started processing the generating a phone number.");
-        return epkClientService.getNextCreditHistIdentifier();
+    public ResponseEntity<CreditHistIdentifier> getCreditHistIdentifier() {
+        log.info("Started processing the getting random credit hist identifier.");
+        return epkClientService.getRandomCreditHistIdentifier();
     }
 
     @PostMapping(value = "/get-credit-history", consumes = "application/json", produces = "application/json")

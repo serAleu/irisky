@@ -75,10 +75,9 @@ public class MainService {
         dataService.saveProcessingResultValidationAgentEntity(entity);
     }
 
-    public String saveCreditHistProcessingAgentEntityStartCalculating(String json) throws JsonProcessingException {
+    public String saveCreditHistProcessingAgentEntityStartCalculating(String json) {
         JsonObject jsonObject = (JsonObject) JsonParser.parseString(json);
         CreditHistProcessingAgentEntity entity = new CreditHistProcessingAgentEntity()
-//                .setEpkId(jsonNode.get("epk_id").asLong())
                 .setIdentifier(StringUtils.normalizeSpace(jsonObject.get("request").getAsJsonArray().get(0).getAsJsonObject().get("identifier").toString()).replaceAll("\\r\\n|\\r|\\n|\"", ""))
                 .setEpkId(3333L)
                 .setProcessingJson(StringUtils.normalizeSpace(jsonObject.get("request").getAsJsonArray().get(1).toString()).replaceAll("\\r\\n|\\r|\\n|", ""))
@@ -91,10 +90,11 @@ public class MainService {
 
     public void saveCreditHistProcessingAgentEntityFinishCalculating(String json) {
         JsonObject jsonObject = (JsonObject) JsonParser.parseString(json);
-        String genuuid = jsonObject.get("genuuid").getAsString();
+        String genuuid = jsonObject.get("request").getAsJsonArray().get(0).getAsJsonObject().get("genuuid").toString();
+        String result = jsonObject.get("request").getAsJsonArray().get(1).getAsJsonObject().get("gredhistreport").toString();
         CreditHistProcessingAgentEntity entity = dataService.getCreditHistProcessingAgentEntityByGenuuid(genuuid);
         if(entity != null) {
-            entity.setResult(StringUtils.normalizeSpace(jsonObject.get("answerAIAgent").toString()).replaceAll("\\r\\n|\\r|\\n", ""))
+            entity.setResult(result)
                     .setStatus(Status.SUCCESS)
                     .setFinishDtm(LocalDateTime.now());
             dataService.saveCreditHistProcessingAgentEntity(entity);
