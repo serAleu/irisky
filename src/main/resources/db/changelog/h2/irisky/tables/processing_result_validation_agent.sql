@@ -8,8 +8,8 @@ CREATE TABLE i_risky.processing_result_validation_agent (
     id INT NOT NULL auto_increment,
     credit_hist_processing_agent_uuid VARCHAR NOT NULL,
     status VARCHAR(100),
-    result VARCHAR,
     added_at TIMESTAMP,
+    result VARCHAR,
     error_details VARCHAR,
     PRIMARY KEY (id)
 )

@@ -31,7 +31,7 @@ public class IrirskyController {
         log.info("Saving request JSON into credit_hist_processing_agent table. request: " + '\n' + request);
         try {
             String creditHistProcessingEntityPKJson = mainService.saveCreditHistProcessingAgentEntityStartCalculating(request);
-            log.info("Primary key for credit_hist_processing_agent table: " + '\n' + creditHistProcessingEntityPKJson);
+            log.info("genuuid for credit_hist_processing_agent table: " + '\n' + creditHistProcessingEntityPKJson);
             return ResponseEntity.status(HttpStatus.OK).body(creditHistProcessingEntityPKJson);
         } catch (Exception e) {
             log.error("Error while saving processing json into credit_hist_processing_agent table. {}", getStackTrace(e));

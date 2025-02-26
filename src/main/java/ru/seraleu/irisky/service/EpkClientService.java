@@ -27,7 +27,6 @@ public class EpkClientService {
         try {
             JsonNode reportCreditHistory = epkClientRepository.findByIdentifier(identifier).getReportCreditHistory();
             Root root = objectMapper.readValue(reportCreditHistory.asText(), Root.class);
-            System.out.println(root.toString());
             //метод валидации КИ на предмет левой персоналки в кредитах
             return ResponseEntity.status(HttpStatus.OK).body(root);
         } catch (Exception e) {

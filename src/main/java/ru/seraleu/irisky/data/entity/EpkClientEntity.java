@@ -22,7 +22,7 @@ public class EpkClientEntity extends BaseJpaEntity {
 
     @Column(name = "epk_id")
     private Long epkId;
-    @Column(name = "identifier")
+    @Column(name = "credit_history_identifier")
     private String identifier;
     @Column(name = "agreement_provided")
     private Boolean agreementProvided;

@@ -5,15 +5,15 @@
 --preconditions onFail:MARK_RAN onError:MARK_RAN
 --preconditions-sql-check expectedResult: 0 SELECT COUNT(*) AS count FROM information_schema.tables WHERE table_schema = 'i_risky' table_name = 'credit_hist_processing_agent'
 CREATE TABLE i_risky.credit_hist_processing_agent (
-    uuid VARCHAR NOT NULL,
+    genuuid VARCHAR NOT NULL,
     epk_id INT NOT NULL,
-    phone_num VARCHAR(100),
-    processing_json JSON,
+    credit_history_identifier VARCHAR(100),
     result VARCHAR,
     status VARCHAR(100),
     start_dtm TIMESTAMP,
     finish_dtm TIMESTAMP,
+    processing_json JSON,
     error_details VARCHAR,
-    PRIMARY KEY (uuid)
+    PRIMARY KEY (genuuid)
 )
 --rollback DROP TABLE i_risky.credit_hist_processing_agent

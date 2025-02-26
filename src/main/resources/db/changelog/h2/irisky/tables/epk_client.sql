@@ -8,7 +8,7 @@ CREATE TABLE i_risky.epk_client
 (
     id                    INT NOT NULL UNIQUE,
     epk_id                INT NOT NULL,
-    identifier             VARCHAR(100),
+    credit_history_identifier             VARCHAR(100),
     agreement_provided    BOOLEAN,
     full_name             VARCHAR(100),
     report_credit_history JSON,

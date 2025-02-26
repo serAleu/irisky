@@ -1,7 +1,11 @@
 package ru.seraleu.irisky.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -71,14 +75,13 @@ public class MainService {
         dataService.saveProcessingResultValidationAgentEntity(entity);
     }
 
-    public String saveCreditHistProcessingAgentEntityStartCalculating(String json) throws Exception {
-        JsonNode jsonNode = mapper.readTree(json);
+    public String saveCreditHistProcessingAgentEntityStartCalculating(String json) throws JsonProcessingException {
+        JsonObject jsonObject = (JsonObject) JsonParser.parseString(json);
         CreditHistProcessingAgentEntity entity = new CreditHistProcessingAgentEntity()
 //                .setEpkId(jsonNode.get("epk_id").asLong())
-//                .setPhoneNum(jsonNode.get("phone_num").asText())
+                .setIdentifier(StringUtils.normalizeSpace(jsonObject.get("request").getAsJsonArray().get(0).getAsJsonObject().get("identifier").toString()).replaceAll("\\r\\n|\\r|\\n|\"", ""))
                 .setEpkId(3333L)
-                .setPhoneNum("88888888")
-                .setProcessingJson(StringUtils.normalizeSpace(json).replaceAll("\\r\\n|\\r|\\n", ""))
+                .setProcessingJson(StringUtils.normalizeSpace(jsonObject.get("request").getAsJsonArray().get(1).toString()).replaceAll("\\r\\n|\\r|\\n|", ""))
                 .setStatus(Status.RECEIVED)
                 .setStartDtm(LocalDateTime.now());
         dataService.saveCreditHistProcessingAgentEntity(entity);
@@ -86,29 +89,29 @@ public class MainService {
 
     }
 
-    public void saveCreditHistProcessingAgentEntityFinishCalculating(String json) throws Exception {
-        JsonNode jsonNode = mapper.readTree(json);
-        String uuid = jsonNode.get("uuid").asText();
-        CreditHistProcessingAgentEntity entity = dataService.getCreditHistProcessingAgentEntityById(uuid);
+    public void saveCreditHistProcessingAgentEntityFinishCalculating(String json) {
+        JsonObject jsonObject = (JsonObject) JsonParser.parseString(json);
+        String genuuid = jsonObject.get("genuuid").getAsString();
+        CreditHistProcessingAgentEntity entity = dataService.getCreditHistProcessingAgentEntityByGenuuid(genuuid);
         if(entity != null) {
-            entity.setResult(StringUtils.normalizeSpace(jsonNode.get("result").asText()).replaceAll("\\r\\n|\\r|\\n", ""))
+            entity.setResult(StringUtils.normalizeSpace(jsonObject.get("answerAIAgent").toString()).replaceAll("\\r\\n|\\r|\\n", ""))
                     .setStatus(Status.SUCCESS)
                     .setFinishDtm(LocalDateTime.now());
             dataService.saveCreditHistProcessingAgentEntity(entity);
         } else {
-            log.info("Cannot find entity by uuid = " + uuid);
+            log.info("Cannot find entity by genuuid = " + genuuid);
         }
     }
 
-    public ResponseEntity<CreditHistIdentifier> generatePhoneNumber() {
+    public ResponseEntity<CreditHistIdentifier> generateIdentifier() {
         Random random = new Random();
-//        StringBuilder phoneNumber = new StringBuilder("+79");
-        StringBuilder phoneNumber = new StringBuilder("k111029");
+//        StringBuilder identifier = new StringBuilder("+79");
+        StringBuilder identifier = new StringBuilder("k111029");
         for (int i = 0; i < 9; i++) {
-            phoneNumber.append((random.nextInt(10)));
+            identifier.append((random.nextInt(10)));
         }
-        log.info("Phone number: {}", phoneNumber);
+        log.info("Phone number: {}", identifier);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(new CreditHistIdentifier(phoneNumber.toString()));
+                .body(new CreditHistIdentifier(identifier.toString()));
     }
 }

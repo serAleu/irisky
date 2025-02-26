@@ -19,14 +19,14 @@ import java.time.LocalDateTime;
 public class CreditHistProcessingAgentEntity {
 
     @Id
-    @Column(name = "uuid")
+    @Column(name = "genuuid")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @UuidGenerator(style = UuidGenerator.Style.RANDOM)
-    private String uuid;
+    private String genuuid;
     @Column(name = "epk_id")
     private Long epkId;
-    @Column(name = "phone_num")
-    private String phoneNum;
+    @Column(name = "credit_history_identifier")
+    private String identifier;
     @Column(name = "processing_json")
     private String processingJson;
     @Column(name = "result")
@@ -44,7 +44,7 @@ public class CreditHistProcessingAgentEntity {
     @Override
     public String toString() {
         return "{" +
-                "\"genuuid\":\"" + uuid +
+                "\"genuuid\":\"" + genuuid +
                 "\"}";
     }
 }

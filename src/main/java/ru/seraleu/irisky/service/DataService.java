@@ -24,8 +24,8 @@ public class DataService {
         log.info("DataService: successful saving CreditHistProcessingAgentEntity.");
     }
 
-    public CreditHistProcessingAgentEntity getCreditHistProcessingAgentEntityById(String uuid) {
-        return creditHistProcessingAgentRepository.getReferenceById(uuid);
+    public CreditHistProcessingAgentEntity getCreditHistProcessingAgentEntityByGenuuid(String genuuid) {
+        return creditHistProcessingAgentRepository.getReferenceById(genuuid);
     }
 
     public void saveEpkClientJpaEntity(EpkClientEntity entity) {
