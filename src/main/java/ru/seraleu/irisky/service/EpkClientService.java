@@ -23,7 +23,7 @@ public class EpkClientService {
     private final ObjectMapper objectMapper;
     private final EpkClientRepository epkClientRepository;
 
-    public ResponseEntity<Root> getRootByPhoneNumber(String identifier) {
+    public ResponseEntity<Root> getRootByCreditHistIdentifier(String identifier) {
         try {
             JsonNode reportCreditHistory = epkClientRepository.findByIdentifier(identifier).getReportCreditHistory();
             Root root = objectMapper.readValue(reportCreditHistory.asText(), Root.class);
@@ -35,7 +35,7 @@ public class EpkClientService {
         }
     }
 
-    public ResponseEntity<CreditHistIdentifier> getRandomPhoneNumber() {
+    public ResponseEntity<CreditHistIdentifier> getRandomNextCreditHistIdentifier() {
         Random random = new Random();
         List<EpkClientEntity> epkClientEntity = epkClientRepository.findAll();
         int randomIndex = random.nextInt(epkClientEntity.size());

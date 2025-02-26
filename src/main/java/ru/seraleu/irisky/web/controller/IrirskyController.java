@@ -72,12 +72,12 @@ public class IrirskyController {
     @GetMapping(value = "/get-number", produces = "application/json")
     public ResponseEntity<CreditHistIdentifier> getPhoneNumber() {
         log.info("Started processing the generating a phone number.");
-        return epkClientService.getRandomPhoneNumber();
+        return epkClientService.getRandomNextCreditHistIdentifier();
     }
 
     @PostMapping(value = "/get-credit-history", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> getCredHistByCreditHistIdentifier(@RequestBody CreditHistIdentifier creditHistIdentifier) {
         log.info("Start processing credit history request. CreditHistIdentifier: " + '\n' + creditHistIdentifier);
-        return epkClientService.getRootByPhoneNumber(creditHistIdentifier.getIdentifier());
+        return epkClientService.getRootByCreditHistIdentifier(creditHistIdentifier.getIdentifier());
     }
 }
