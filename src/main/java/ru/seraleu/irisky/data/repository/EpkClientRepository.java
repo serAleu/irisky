@@ -13,6 +13,6 @@ public interface EpkClientRepository extends BaseJpaRepository<EpkClientEntity> 
 
     EpkClientEntity findByIdentifier(@Param("identifier") String identifier);
 
-    @Query(value = "select icredit_history_identifier from i_risky.epk_client", nativeQuery = true)
+    @Query(value = "select credit_history_identifier from i_risky.epk_client", nativeQuery = true)
     List<String> getAllIdentifiers();
 }
