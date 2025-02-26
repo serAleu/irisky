@@ -1,17 +1,17 @@
 --liquibase formatted sql
 
---changeset ser_aleu_kris:7cb80142-e3fd-4a4b-8d72-e0d1ed70bffe runOnChange:true failOnError:true
---comment: Дефолтное значение
+--changeset ser_aleu_kris:7cb10142-e3fd-4a4b-8d71-e0d1ed70bffw runOnChange:true failOnError:true
+--comment: КИ с ошибочными идентичными повторяющимися записями
 Insert into i_risky.epk_client (id,
                                 epk_id,
                                 credit_history_identifier,
                                 agreement_provided,
                                 full_name,
                                 report_credit_history)
-values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Андреевич',
+values (6l, 6666L, 'k111029335389066', true, 'Грабко Антонина Владимировна',
         '{
-  "taskID":"7363eb71-b6b6-4bdc-8ed9-620ad0ef5d07",
-  "responseDate":"21.01.2025",
+  "taskID":"7443eb71-b6b6-4bdc-8ed9-620ad0ef5d44",
+  "responseDate":"25.01.2025",
   "rating":{
     "score":906,
     "levels":[
@@ -32,7 +32,6 @@ values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Анд
   "report":{
     "loansObligationsOpen":[
       {
-
         "caption":"ПАО СОВКОМБАНК",
         "arrearsSum":"5 000 000,00 ₽",
         "paymentAmount":"-",
@@ -43,7 +42,26 @@ values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Анд
         "value":"7 000 000,00 ₽"
       },
       {
-
+        "caption":"ПАО СОВКОМБАНК",
+        "arrearsSum":"5 000 000,00 ₽",
+        "paymentAmount":"-",
+        "duration":"13.08.2031",
+        "outStandingBalance":"5 000 000,00 ₽",
+        "arrearsBalance":"5 000 000,00 ₽",
+        "openDate":"30.10.2019",
+        "value":"7 000 000,00 ₽"
+      },
+      {
+        "caption":"ПАО СОВКОМБАНК",
+        "arrearsSum":"5 000 000,00 ₽",
+        "paymentAmount":"-",
+        "duration":"13.08.2031",
+        "outStandingBalance":"5 000 000,00 ₽",
+        "arrearsBalance":"5 000 000,00 ₽",
+        "openDate":"30.10.2019",
+        "value":"7 000 000,00 ₽"
+      },
+      {
         "caption":"ПАО СОВКОМБАНК",
         "arrearsSum":"5 000 000,00 ₽",
         "paymentAmount":"-",
@@ -56,7 +74,6 @@ values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Анд
     ],
     "loansObligationsClosed":[
       {
-
         "caption":"ПАО СОВКОМБАНК",
         "paymentAmount":"-",
         "duration":"13.08.2031",
@@ -67,7 +84,6 @@ values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Анд
         "value":"5 000 000,00 ₽"
       },
       {
-
         "caption":"ПАО СОВКОМБАНК",
         "paymentAmount":"-",
         "duration":"13.08.2031",
@@ -78,7 +94,26 @@ values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Анд
         "value":"5 000 000,00 ₽"
       },
       {
-
+        "caption":"ПАО СОВКОМБАНК",
+        "paymentAmount":"-",
+        "duration":"13.08.2031",
+        "outStandingBalance":"-",
+        "arrearsBalance":"-",
+        "openDate":"30.10.2019",
+        "closeDate":"13.08.2021",
+        "value":"5 000 000,00 ₽"
+      },
+      {
+        "caption":"ПАО СОВКОМБАНК",
+        "paymentAmount":"-",
+        "duration":"13.08.2031",
+        "outStandingBalance":"-",
+        "arrearsBalance":"-",
+        "openDate":"30.10.2019",
+        "closeDate":"13.08.2021",
+        "value":"5 000 000,00 ₽"
+      },
+      {
         "caption":"ПАО СОВКОМБАНК",
         "paymentAmount":"-",
         "duration":"13.08.2031",
@@ -91,21 +126,30 @@ values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Анд
     ],
     "collateralContractsOpen":[
       {
-
         "caption":"КОРНИЛОВ С. Ю.",
         "openDate":"30.10.2019",
         "closeDate":"30.10.2019",
         "value":"5 000 000,00 ₽"
       },
       {
-
+        "caption":"КОРНИЛОВ С. Ю.",
+        "openDate":"30.10.2019",
+        "closeDate":"30.10.2019",
+        "value":"5 000 000,00 ₽"
+      },
+      {
+        "caption":"КОРНИЛОВ С. Ю.",
+        "openDate":"30.10.2019",
+        "closeDate":"30.10.2019",
+        "value":"5 000 000,00 ₽"
+      },
+      {
         "caption":"СТАРАДУБЦЕВ Р. А.",
         "openDate":"30.10.2019",
         "closeDate":"30.10.2019",
         "value":"5 000 000,00 ₽"
       },
       {
-
         "caption":"ПАО СОВКОМБАНК",
         "openDate":"30.10.2019",
         "closeDate":"30.10.2019",
@@ -114,7 +158,18 @@ values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Анд
     ],
     "collateralContractsClosed":[
       {
-
+        "caption":"ПАО СОВКОМБАНК",
+        "openDate":"12.06.2021",
+        "closeDate":"12.06.2021",
+        "value":"10,00 ₽"
+      },
+        {
+        "caption":"ПАО СОВКОМБАНК",
+        "openDate":"12.06.2021",
+        "closeDate":"12.06.2021",
+        "value":"10,00 ₽"
+      },
+      {
         "caption":"ПАО СОВКОМБАНК",
         "openDate":"12.06.2021",
         "closeDate":"12.06.2021",
@@ -141,6 +196,20 @@ values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Анд
     ],
     "statements":[
       {
+        "title":"ПАО СОВКОМБАНК",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"7 000 000,00 ₽",
+        "commitment":"-"
+      },{
+        "title":"ПАО СОВКОМБАНК",
+        "date":"13.08.2021",
+        "status":"-",
+        "source":"ПАО СОВКОМБАНК",
+        "value":"7 000 000,00 ₽",
+        "commitment":"-"
+      },{
         "title":"ПАО СОВКОМБАНК",
         "date":"13.08.2021",
         "status":"-",

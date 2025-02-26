@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset ser_aleu_kris:7cb80142-e3fd-4a4b-8d72-e0d1ed70bffe runOnChange:true failOnError:true
+--changeset ser_aleu_kris:7cb80142-e6fd-6a4b-8d72-e0d1ed70bffe runOnChange:true failOnError:true
 --comment: Дефолтное значение
 Insert into i_risky.epk_client (id,
                                 epk_id,
@@ -8,9 +8,9 @@ Insert into i_risky.epk_client (id,
                                 agreement_provided,
                                 full_name,
                                 report_credit_history)
-values (1l,55555L, 'k111029165389685', true, 'Новиков Михаил Андреевич',
+values (9l,9999l, 'k11102915530099', true, 'Киркоров Антон Магамедович',
         '{
-  "taskID":"7363eb71-b6b6-4bdc-8ed9-620ad0ef5d07",
+  "taskID":"4363eb71-b6b6-4bdc-8ed4-620ad0ef5d04",
   "responseDate":"21.01.2025",
   "rating":{
     "score":906,

@@ -1,6 +1,7 @@
 --liquibase formatted sql
 
 --changeset ser_aleu_kris:1cb80942-e3fd-4a4b-8d72-e9d1ed79bffe runOnChange:true failOnError:true
+--comment: Плохая КИ
 Insert into i_risky.epk_client (id,
                                 epk_id,
                                 credit_history_identifier,

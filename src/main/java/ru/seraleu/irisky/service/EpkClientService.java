@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,10 @@ import java.util.Random;
 @Service
 @RequiredArgsConstructor
 public class EpkClientService {
+
     private final ObjectMapper objectMapper;
     private final EpkClientRepository epkClientRepository;
+    private final List<String> identifiers;
 
     public ResponseEntity<Root> getRootByCreditHistIdentifier(String identifier) {
         try {
@@ -35,7 +38,7 @@ public class EpkClientService {
         }
     }
 
-    public ResponseEntity<CreditHistIdentifier> getRandomNextCreditHistIdentifier() {
+    public ResponseEntity<CreditHistIdentifier> getNextCreditHistIdentifier() {
         Random random = new Random();
         List<EpkClientEntity> epkClientEntity = epkClientRepository.findAll();
         int randomIndex = random.nextInt(epkClientEntity.size());
