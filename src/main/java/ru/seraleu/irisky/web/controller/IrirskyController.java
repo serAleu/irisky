@@ -70,7 +70,7 @@ public class IrirskyController {
     }
 
     @GetMapping(value = "/get-number", produces = "application/json")
-    public ResponseEntity<CreditHistIdentifier> getCreditHistIdentifier() {
+    public ResponseEntity<CreditHistIdentifier> getRandomCreditHistIdentifier() {
         log.info("Started processing the getting random credit hist identifier.");
         return epkClientService.getRandomCreditHistIdentifier();
     }
