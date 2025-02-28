@@ -20,7 +20,7 @@ spring:
     name: irisky
 
   profiles:
-    active: h2,telegram,giga
+    active: h2,giga
 
   liquibase:
     enabled: true
