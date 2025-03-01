@@ -35,9 +35,9 @@
 запустить cmd/Git Bush в той директории где вы хотите сбилдить i-risky-app.
 выполнить: git init
 выполнить: git clone https://github.com/serAleu/irisky.git
-выполнить: cd */irisky
+выполнить: cd irisky
 выполнить: mvn clean install
-выполнить: cd */target
+выполнить: cd target
 выполнить: java -jar i-risky-app.jar
 
 Запущенный на локальной машине сервис работает, но не предоставляет возможности взаимодействовать с публичными ресурсами в сети.
