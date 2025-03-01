@@ -63,8 +63,8 @@ public class MainService {
 
     public void saveCreditHistProcessingAgentEntityFinishCalculating(String json) {
         JsonObject jsonObject = (JsonObject) JsonParser.parseString(json);
-        String genuuid = jsonObject.get("request").getAsJsonArray().get(0).getAsJsonObject().get("genuuid").toString();
-        String result = jsonObject.get("request").getAsJsonArray().get(1).getAsJsonObject().get("gredhistreport").toString();
+        String genuuid = jsonObject.get("genuuid").getAsString();
+        String result = jsonObject.get("gredhistreport").getAsString();
         CreditHistProcessingAgentEntity entity = dataService.getCreditHistProcessingAgentEntityByGenuuid(genuuid);
         if(entity != null) {
             entity.setResult(result)
