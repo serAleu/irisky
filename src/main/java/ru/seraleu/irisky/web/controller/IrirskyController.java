@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.seraleu.irisky.service.DataService;
 import ru.seraleu.irisky.service.EpkClientService;
 import ru.seraleu.irisky.service.MainService;
+import ru.seraleu.irisky.web.dto.pprb.GenuuidDTO;
 import ru.seraleu.irisky.web.dto.pprb.identifier.CreditHistIdentifier;
 
 import java.util.List;
@@ -26,6 +28,7 @@ import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 public class IrirskyController {
 
     private final MainService mainService;
+    private final DataService dataService;
 
     private final EpkClientService epkClientService;
     private final List<String> candies;
@@ -77,6 +80,15 @@ public class IrirskyController {
     public ResponseEntity<?> getCredHistByCreditHistIdentifier(@RequestBody CreditHistIdentifier creditHistIdentifier) {
         log.info("Start processing credit history request. CreditHistIdentifier: " + '\n' + creditHistIdentifier);
         return epkClientService.getRootByCreditHistIdentifier(creditHistIdentifier.getIdentifier());
+    }
+
+    @PostMapping(value = "/get-report", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> getReport(@RequestBody GenuuidDTO uuid){
+        log.info("Запросили отчет для " + uuid );
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(dataService.getCreditHistProcessingAgentEntityByGenuuid(uuid.getGenuuid()).getResult());
+
     }
 
     @GetMapping(value = "/super")
