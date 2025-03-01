@@ -2,38 +2,26 @@ server:
   port: 3838
 
 spring:
+  application:
+    name: irisky
+  docker:
+    compose:
+      enabled: true
+      file: docker-compose.yml
   ssl:
     bundle:
       pem:
         my-client:
           truststore:
             certificate: src/main/resources/certs/russian_trusted_sub_ca.cer
-#  ssl:
-#    bundle:
-#      jks:
-#        my-client:
-#          truststore:
-#            location:
-#            password:
-#            type: PKCS12
-  application:
-    name: irisky
-
   profiles:
     active: h2,giga
-
   liquibase:
     enabled: true
     change-log: classpath*:/db/changelog/main-changelog.xml
-
   h2:
     console:
       enabled: true
-
   jpa:
     hibernate:
         use-new-id-generator-mappings: false
-
-sber:
-  llm:
-    auth:

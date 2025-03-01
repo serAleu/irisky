@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  i-risky-app:
+    image: seraleu/i-risky-app
+    container_name: ser-aleu-irisky
+    restart: always

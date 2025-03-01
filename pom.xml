@@ -18,7 +18,6 @@
 
 	<properties>
 		<java.version>17</java.version>
-		<telegrambots.version>6.9.7.1</telegrambots.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<lombok.version>1.18.36</lombok.version>
 		<liquibase.version>4.31.0</liquibase.version>
@@ -26,7 +25,9 @@
 		<spring-cloud-starter-openfeign.version>3.1.6</spring-cloud-starter-openfeign.version>
 		<feign-httpclient.version>12.3</feign-httpclient.version>
 		<feign-form.version>3.8.0</feign-form.version>
-		<telegrambots.version>6.9.7.1</telegrambots.version>
+		<spring-docker-compose.version>3.1.1</spring-docker-compose.version>
+		<gson.version>2.12.1</gson.version>
+		<commons-lang3.version>3.0</commons-lang3.version>
 	</properties>
 
 	<dependencies>
@@ -41,15 +42,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.pengrad</groupId>
-			<artifactId>java-telegram-bot-api</artifactId>
-			<version>8.3.0</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.17.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.telegram</groupId>
-			<artifactId>telegrambots</artifactId>
-			<version>${telegrambots.version}</version>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.12.1</version>
 		</dependency>
 
 		<dependency>
@@ -93,6 +94,12 @@
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-maven-plugin</artifactId>
 			<version>${liquibase.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-docker-compose</artifactId>
+			<version>${spring-docker-compose.version}</version>
 		</dependency>
 	</dependencies>
 
