@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.seraleu.irisky.service.EpkClientService;
 import ru.seraleu.irisky.service.MainService;
-import ru.seraleu.irisky.web.dto.pprb.phone.CreditHistIdentifier;
+import ru.seraleu.irisky.web.dto.pprb.identifier.CreditHistIdentifier;
+
+import java.util.List;
+import java.util.Random;
 
 import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 
@@ -25,6 +28,7 @@ public class IrirskyController {
     private final MainService mainService;
 
     private final EpkClientService epkClientService;
+    private final List<String> candies;
 
     @PostMapping(value = "/save-credit-hist-processing-start", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> saveCreditHistProcessingAgentEntityStartCalculating(@RequestBody String request) {
@@ -63,12 +67,6 @@ public class IrirskyController {
         }
     }
 
-    @PostMapping(value = "/post", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> getCreditHistoryByCreditHistIdentifier(@RequestBody String request) {
-        log.info("Started processing the request. request: " + '\n' + request);
-        return mainService.processRequest(request);
-    }
-
     @GetMapping(value = "/get-number", produces = "application/json")
     public ResponseEntity<CreditHistIdentifier> getRandomCreditHistIdentifier() {
         log.info("Started processing the getting random credit hist identifier.");
@@ -79,5 +77,18 @@ public class IrirskyController {
     public ResponseEntity<?> getCredHistByCreditHistIdentifier(@RequestBody CreditHistIdentifier creditHistIdentifier) {
         log.info("Start processing credit history request. CreditHistIdentifier: " + '\n' + creditHistIdentifier);
         return epkClientService.getRootByCreditHistIdentifier(creditHistIdentifier.getIdentifier());
+    }
+
+    @GetMapping(value = "/super")
+    public String ureSuper() {
+        String candy = candies.get(new Random().nextInt(candies.size()));
+        log.info("Someone had candy! {}", candy);
+        return candy;
+    }
+
+    @GetMapping(value = "/health-check")
+    public ResponseEntity<String> healthCheck() {
+        log.info("Successful health check");
+        return ResponseEntity.status(HttpStatus.OK).body("200 OK");
     }
 }

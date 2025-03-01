@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import ru.seraleu.irisky.data.repository.EpkClientRepository;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
@@ -29,5 +31,19 @@ public class IrirskyConfig {
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     public List<String> identifiers(@Autowired EpkClientRepository epkClientRepository) {
         return epkClientRepository.getAllIdentifiers();
+    }
+
+    @Bean
+    public List<String> candies() {
+        List<String> candies = new ArrayList<>();
+        candies.add("Нет слов, ты супер!");
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/static/candies.txt"))) {
+            while (reader.ready()){
+                candies.add(reader.readLine());
+            }
+        } catch (IOException e) {
+            log.error("Candies aren't available ;( ");
+        }
+        return candies;
     }
 }

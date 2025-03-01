@@ -8,9 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import ru.seraleu.irisky.data.entity.EpkClientEntity;
 import ru.seraleu.irisky.data.repository.EpkClientRepository;
 import ru.seraleu.irisky.web.dto.pprb.Root;
-import ru.seraleu.irisky.web.dto.pprb.phone.CreditHistIdentifier;
+import ru.seraleu.irisky.web.dto.pprb.identifier.CreditHistIdentifier;
 
 import java.util.List;
 import java.util.Random;
@@ -26,7 +27,8 @@ public class EpkClientService {
 
     public ResponseEntity<Root> getRootByCreditHistIdentifier(String identifier) {
         try {
-            JsonNode reportCreditHistory = epkClientRepository.findByIdentifier(identifier).getReportCreditHistory();
+            EpkClientEntity entity = epkClientRepository.findByIdentifier(identifier);
+            JsonNode reportCreditHistory = entity.getReportCreditHistory();
             Root root = objectMapper.readValue(reportCreditHistory.asText(), Root.class);
             //метод валидации КИ на предмет левой персоналки в кредитах
             return ResponseEntity.status(HttpStatus.OK).body(root);

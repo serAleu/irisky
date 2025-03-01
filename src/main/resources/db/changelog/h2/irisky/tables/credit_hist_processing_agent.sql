@@ -8,6 +8,7 @@ CREATE TABLE i_risky.credit_hist_processing_agent (
     genuuid VARCHAR NOT NULL,
     epk_id INT NOT NULL,
     credit_history_identifier VARCHAR(100),
+    pi_is_valid BOOLEAN,
     result VARCHAR,
     status VARCHAR(100),
     start_dtm TIMESTAMP,

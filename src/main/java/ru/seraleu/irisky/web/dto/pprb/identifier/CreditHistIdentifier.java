@@ -1,4 +1,4 @@
-package ru.seraleu.irisky.web.dto.pprb.phone;
+package ru.seraleu.irisky.web.dto.pprb.identifier;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
