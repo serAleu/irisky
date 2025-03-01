@@ -13,8 +13,8 @@
 
 	<groupId>ru.seraleu</groupId>
 	<artifactId>irisky</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>irisky</name>
+	<version>0.3.3</version>
 
 	<properties>
 		<java.version>17</java.version>

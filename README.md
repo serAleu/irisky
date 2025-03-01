@@ -9,12 +9,40 @@
 ....:::::::::::::..:::::..:::....::::......::::..::::..::::::..:::::::::::..::::::........:::..:::::..:::..:::::..::
 
 1) Сапожников Сергей Алексеевич (Developer) - @ser_ser_ser / SAleSapozhnikov@sberbank.ru
-2) Гагаев Александр Алексеевич (QA Java) - @gagaevich / aagagaev@sberbank.ru
+2) Гагаев Александр Алексеевич (QA) - @gagaevich / aagagaev@sberbank.ru
 3) Сираш Станислав Сергеевич (System Analyst) - @Stan_89 / sssirash@sberbank.ru
 4) Костицына Кристина Ивановна (Developer) - @Kr_K_I / kikostitsyna@sberbank.ru
 
 
 ### For quick start just go here: [https//t.me/i-risky-bot]()
+
+
+### Инструкция по запуску
+
+[
+   Note: начиная с 03.02.2025-00:00 по 05.02.2025-18:00 контейнер с сервисом i-risky-app будет запущен для обеспечения работоспособности i-risky-system.
+   Это значит, что публичные URLs по которым GigaAgentBuilder обращается к i-risky-app и URL по которому доступна H2Database будут уже заняты 
+   контейнером для демонстрации работы i-risky-system. Если вы хотите поднять i-risky-app service локально, просьба связаться с членами i-risky-team
+]
+
+# Если у вас есть установленный docker:
+
+выполнить: docker pull seraleu/i-risky-app:0.3.2
+выполнить: docker run -p -d 127.0.0.1:3838:3838 seraleu/i-risky-app --rm
+
+# Если у вас на рабочей машине установлена любая IDE и/или установлены Java, GIT и Maven:
+
+запустить cmd/Git Bush в той директории где вы хотите сбилдить i-risky-app.
+выполнить: git init
+выполнить: git clone https://github.com/serAleu/irisky.git
+выполнить: cd */irisky
+выполнить: mvn clean install
+выполнить: cd */target
+выполнить: java -jar i-risky-app.jar
+
+Запущенный на локальной машине сервис работает, но не предоставляет возможности взаимодействовать с публичными ресурсами в сети.
+
+ссылка на h2: https://irisky-giga.nl.tuna.am/h2-irisky/
 
 
 ###### Инструкция к использованию i-risky-app ######
@@ -113,30 +141,6 @@
 и перейдет на Шаг 3 данного руководства. 
 9) С этого момента можно задавать вопросы боту в чате касательно полученной кредитной истории, просить бота дать советы по улучшению и т.к. после того, как бот 
 ответит на все ваши вопросы, вам необходимо нажать на кнопку [I-RISKY-SYSTEM stop process].
-
-
-### Как запустить i-risky-app на своей локальной машине
-
-   [
-   Note: начиная с 03.02.2025-00:00 по 05.02.2025-18:00 сервис i-risky-app будет запущен для обеспечения работоспособности i-risky-system. 
-   Это значит, что URLs по которым к i-risky-app обращается GigaAgentBuilder + GenAI Gigachat и H2Database будут уже заняты демонстрационным
-   контейнером. Если вы хотите поднять i-risky-app service локально, просьба написать в тг одному из участников команды (контакты даны выше)
-   ]
-
-# Если у вас есть установленный docker:
-
-выполнить: docker pull seraleu/i-risky-app:latest
-выполнить: docker run -p -d 127.0.0.1:3838:3838 seraleu/i-risky-app --rm
-
-# Если у вас на рабочей машине установлена любая IDE и/или установлены GIT и Maven:
-
-1) git clone https://github.com/serAleu/irisky.git
-2) mvn clean install
-3) java -jar i-risky-app.jar
-
-Запущенный на локальной машине сервис работает, но не предоставляет возможности взаимодействовать с публичными ресурсами в сети.
-
-ссылка на h2: https://irisky-giga.nl.tuna.am/h2-irisky/
 
 
 ### Список тестовых клиентов

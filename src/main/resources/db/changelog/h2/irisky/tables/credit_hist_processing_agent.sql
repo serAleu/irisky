@@ -9,10 +9,10 @@ CREATE TABLE i_risky.credit_hist_processing_agent (
     epk_id INT NOT NULL,
     credit_history_identifier VARCHAR(100),
     pi_is_valid BOOLEAN,
-    result VARCHAR,
     status VARCHAR(100),
     start_dtm TIMESTAMP,
     finish_dtm TIMESTAMP,
+    result VARCHAR,
     processing_json JSON,
     error_details VARCHAR,
     PRIMARY KEY (genuuid)

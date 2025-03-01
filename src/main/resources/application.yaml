@@ -6,7 +6,7 @@ spring:
     name: irisky
   docker:
     compose:
-      enabled: true
+      enabled: false
       file: docker-compose.yml
   ssl:
     bundle:
@@ -15,7 +15,7 @@ spring:
           truststore:
             certificate: src/main/resources/certs/russian_trusted_sub_ca.cer
   profiles:
-    active: h2,giga
+    active: h2
   liquibase:
     enabled: true
     change-log: classpath*:/db/changelog/main-changelog.xml
