@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.seraleu.irisky.service.DataService;
 import ru.seraleu.irisky.service.EpkClientService;
 import ru.seraleu.irisky.service.MainService;
+import ru.seraleu.irisky.utils.IriskyUtils;
 import ru.seraleu.irisky.web.dto.pprb.GenuuidDTO;
 import ru.seraleu.irisky.web.dto.pprb.identifier.CreditHistIdentifier;
 
@@ -48,7 +49,7 @@ public class IrirskyController {
 
     @PostMapping(value = "/save-credit-hist-processing-finish", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> saveCreditHistProcessingAgentEntityFinishCalculating(@RequestBody String response) {
-        log.info("Saving response unvalidated into credit_hist_processing_agent table. response: " + '\n' + response);
+        log.info("Saving unvalidated response into credit_hist_processing_agent table. response: " + '\n' + response);
         try {
             mainService.saveCreditHistProcessingAgentEntityFinishCalculating(response);
             return ResponseEntity.status(HttpStatus.OK).build();
@@ -84,10 +85,9 @@ public class IrirskyController {
 
     @PostMapping(value = "/get-report", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> getReport(@RequestBody GenuuidDTO uuid){
-        log.info("Запросили отчет для " + uuid );
-
+        log.info("Credit report was requested for uuid " + uuid );
         return ResponseEntity.status(HttpStatus.OK)
-                .body(dataService.getCreditHistProcessingAgentEntityByGenuuid(uuid.getGenuuid()).getResult());
+                .body(IriskyUtils.formatReport(dataService.getCreditHistProcessingAgentEntityByGenuuid(uuid.getGenuuid()).getResult()));
 
     }
 

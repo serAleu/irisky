@@ -1,5 +1,5 @@
-server:
-  port: 3838
+#server:
+#  port: 3838
 
 spring:
   application:
