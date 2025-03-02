@@ -36,8 +36,8 @@ public class IrirskyConfig {
     @Bean
     public List<String> candies() {
         List<String> candies = new ArrayList<>();
-        candies.add("Нет слов, ты супер!");
-        try (BufferedReader reader = new BufferedReader(new FileReader("/src/main/resources/static/candies.txt"))) {
+        candies.add("Твое присутствие делает всё вокруг теплее!");
+        try (BufferedReader reader = new BufferedReader(new FileReader("candies.txt"))) {
             while (reader.ready()){
                 candies.add(reader.readLine());
             }
