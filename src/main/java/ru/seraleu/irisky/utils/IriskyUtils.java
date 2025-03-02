@@ -8,6 +8,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class IriskyUtils {
 
     public static String formatReport(String report) {
+        if (StringUtils.isBlank(report)) {
+            return "отчет пустой";
+        }
         StringUtils.replace(report, "\n", "");
         StringBuilder reportBuilder = new StringBuilder();
         AtomicInteger counter = new AtomicInteger(0);

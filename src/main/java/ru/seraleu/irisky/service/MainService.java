@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import ru.seraleu.irisky.data.entity.CreditHistProcessingAgentEntity;
 import ru.seraleu.irisky.data.entity.ProcessingResultValidationAgentEntity;
 import ru.seraleu.irisky.enums.Status;
+import ru.seraleu.irisky.web.dto.pprb.GenuuidDTO;
 import ru.seraleu.irisky.web.dto.pprb.identifier.CreditHistIdentifier;
 
 import java.time.LocalDateTime;
@@ -73,6 +74,20 @@ public class MainService {
             dataService.saveCreditHistProcessingAgentEntity(entity);
         } else {
             log.info("Cannot find entity by genuuid = " + genuuid);
+        }
+    }
+
+    public void saveCreditHistProcessingAgentEntityValidationFinishedCalculating(String uuid) {
+        if(!StringUtils.isBlank(uuid)) {
+            JsonObject jsonObject = (JsonObject) JsonParser.parseString(uuid);
+            String genuuid = jsonObject.get("genuuid").getAsString();
+            CreditHistProcessingAgentEntity entity = dataService.getCreditHistProcessingAgentEntityByGenuuid(genuuid);
+            if (entity != null) {
+                entity.setIsResultValid(true).setFinishDtm(LocalDateTime.now());
+                dataService.saveCreditHistProcessingAgentEntity(entity);
+            } else {
+                log.info("Cannot find entity by genuuid = " + genuuid);
+            }
         }
     }
 

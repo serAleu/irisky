@@ -25,6 +25,8 @@ public class CreditHistProcessingAgentEntity {
     private String genuuid;
     @Column(name = "epk_id")
     private Long epkId;
+    @Column(name = "is_result_valid")
+    private Boolean isResultValid;
     @Column(name = "pi_is_valid")
     private Boolean piIsValid;
     @Column(name = "credit_history_identifier")

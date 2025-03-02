@@ -12,6 +12,7 @@ CREATE TABLE i_risky.credit_hist_processing_agent (
     status VARCHAR(100),
     start_dtm TIMESTAMP,
     finish_dtm TIMESTAMP,
+    is_result_valid BOOLEAN,
     result VARCHAR,
     processing_json JSON,
     error_details VARCHAR,
