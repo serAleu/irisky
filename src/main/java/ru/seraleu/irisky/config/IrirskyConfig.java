@@ -37,7 +37,7 @@ public class IrirskyConfig {
     public List<String> candies() {
         List<String> candies = new ArrayList<>();
         candies.add("Нет слов, ты супер!");
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/static/candies.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("/src/main/resources/static/candies.txt"))) {
             while (reader.ready()){
                 candies.add(reader.readLine());
             }
