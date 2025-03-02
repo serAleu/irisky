@@ -26,7 +26,7 @@
 
 # Если у вас есть установленный docker:
 
-выполнить: docker pull seraleu/i-risky-app:1.1.0
+выполнить: docker pull seraleu/i-risky-app:1.1.2
 выполнить: docker run -p -d 127.0.0.1:3838:3838 seraleu/i-risky-app --rm
 
 # Если у вас на рабочей машине установлена любая IDE и/или установлены Java, GIT и Maven:
