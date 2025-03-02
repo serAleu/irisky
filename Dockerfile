@@ -5,7 +5,7 @@ RUN mvn -f /app/pom.xml clean package -Dmaven.test.skip=true
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-ADD candies.txt /src/main/resources/static/
+COPY /src/main/resources/static/ candies.txt
 COPY --from=builder /app/target/*.jar /app/*.jar
 EXPOSE 3838
 ENTRYPOINT ["java", "-jar", "/app/*.jar"]
